@@ -44,6 +44,8 @@ const Document = () => {
       if (response.ok) {
         const receivedData = await response.json();
         setFiles(receivedData);
+      } else if(response.statu===500){
+        console.log("response received");
       }
     }
 
