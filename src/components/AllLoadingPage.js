@@ -14,7 +14,7 @@ export default function AllLoadingPage() {
         username, docName
       };
 
-      const response = await fetch("https://securedoc-server.onrender.com/all", {
+      const response = await fetch("https://securedoc-server.vercel.app/all", {
         method: "POST",
         headers: {
           "content-type" : "application/json"

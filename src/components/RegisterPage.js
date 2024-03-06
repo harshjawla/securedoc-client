@@ -15,7 +15,7 @@ export default function RegisterPage() {
     useEffect(() => {
       async function authChecker() {
         try {
-          const response = await fetch("https://securedoc-server.onrender.com/authenticate", {
+          const response = await fetch("https://securedoc-server.vercel.app/authenticate", {
             credentials: "include",
           });
   
@@ -53,7 +53,7 @@ export default function RegisterPage() {
                 password
             };
     
-            const response = await fetch("https://securedoc-server.onrender.com/register", {
+            const response = await fetch("https://securedoc-server.vercel.app/register", {
                 method: "POST",
                 headers: {
                     "content-Type": "application/json"

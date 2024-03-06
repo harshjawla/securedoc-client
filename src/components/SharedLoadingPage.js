@@ -14,7 +14,7 @@ export default function SharedLoadingPage() {
           username, docName
         };
   
-        const response = await fetch("https://securedoc-server.onrender.com/sharing", {
+        const response = await fetch("https://securedoc-server.vercel.app/sharing", {
           method: "POST",
           headers: {
             "content-type" : "application/json"

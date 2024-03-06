@@ -19,7 +19,7 @@ const Navbar = () => {
   }
 
   async function handleClick() {
-    const response = await fetch("https://securedoc-server.onrender.com/logout", {
+    const response = await fetch("https://securedoc-server.vercel.app/logout", {
       method: "POST",
       credentials: "include",
     });

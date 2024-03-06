@@ -15,7 +15,7 @@ export default function LoginPage() {
   useEffect(() => {
     async function authChecker() {
       try {
-        const response = await fetch("https://securedoc-server.onrender.com/authenticate", {
+        const response = await fetch("https://securedoc-server.vercel.app/authenticate", {
           credentials: "include",
         });
 
@@ -64,7 +64,7 @@ export default function LoginPage() {
         password,
       };
   
-      const response = await fetch("https://securedoc-server.onrender.com/login", {
+      const response = await fetch("https://securedoc-server.vercel.app/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
