@@ -110,6 +110,9 @@ export default function LoginPage() {
             color: "red",
           },
         });
+      } else if(response.status === 500){
+        const receivedData = await response.json();
+        console.log(receivedData);
       }
     } catch (error) {
       console.error("Error occurred:", error);
