@@ -64,8 +64,6 @@ export default function LoginPage() {
         password,
       };
   
-      console.log("Sending login request with data:", data); // Add logging statement
-  
       const response = await fetch("https://securedoc-server.onrender.com/login", {
         method: "POST",
         headers: {
@@ -76,10 +74,28 @@ export default function LoginPage() {
       });
   
       if (response.ok) {
-        console.log("Login successful!"); // Add logging statement
+        // Check if the response headers include the 'Set-Cookie' header
+        if (response.headers.has('Set-Cookie')) {
+          // Extract the cookie string from the 'Set-Cookie' header
+          const cookieString = response.headers.get('Set-Cookie');
+    
+          // Parse the cookie string to extract individual cookies
+          const cookies = cookieString.split('; ');
+    
+          // Check if the JWT token cookie is present among the cookies
+          const jwtCookie = cookies.find(cookie => cookie.startsWith('jwt='));
+    
+          if (jwtCookie) {
+            console.log('JWT token cookie received:', jwtCookie);
+          } else {
+            console.log('JWT token cookie not found in the response');
+          }
+        } else {
+          console.log('No Set-Cookie header found in the response');
+        }
+        
         navigate("/user");
       } else if (response.status === 401) {
-        console.log("Invalid username or password"); // Add logging statement
         setLoading(false);
         navigate("/login", {
           state: {
@@ -88,7 +104,6 @@ export default function LoginPage() {
           },
         });
       } else if (response.status === 400) {
-        console.log("User not registered"); // Add logging statement
         navigate("/register", {
           state: {
             message: "User not registered, please register",
@@ -100,6 +115,7 @@ export default function LoginPage() {
       console.error("Error occurred:", error);
     }
   }
+  
   
 
   return (
