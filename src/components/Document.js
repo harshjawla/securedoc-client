@@ -37,20 +37,29 @@ const Document = () => {
 
   useEffect(() => {
     async function fileParser() {
-      const response = await fetch("https://securedoc-server.vercel.app/userfiles", {
-        method: "POST",
-        credentials: "include",
-      });
-      if (response.ok) {
-        const receivedData = await response.json();
-        setFiles(receivedData);
-      } else if(response.statu===500){
-        console.log("response received");
+      try {
+        const response = await fetch("https://securedoc-server.onrender.com/userfiles", {
+          method: "POST",
+          credentials: "include",
+        });
+  
+        if (response.ok) {
+          const receivedData = await response.json();
+          setFiles(receivedData);
+        } else {
+          // Handle non-200 responses
+          const receivedData = await response.json();
+          console.log("Error:", receivedData);
+        }
+      } catch (error) {
+        // Handle network errors
+        console.error("Network error:", error);
       }
     }
-
+  
     fileParser();
   }, []);
+  
 
   useEffect(() => {
     if (files) {

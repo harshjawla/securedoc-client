@@ -12,7 +12,7 @@ export default function ShareModal({ onClose, name, emails, docName }) {
         name: docName,
         emails
     };
-    const response = await fetch("https://securedoc-server.vercel.app/share", {
+    const response = await fetch("https://securedoc-server.onrender.com/share", {
         method: "POST",
         headers: {
             "content-type" : "application/json",

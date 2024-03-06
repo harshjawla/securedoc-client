@@ -22,7 +22,7 @@ export default function Modal({ onClose }) {
       const data = {
         name : name,
       }
-      const response = await fetch("https://securedoc-server.vercel.app/create", {
+      const response = await fetch("https://securedoc-server.onrender.com/create", {
         method: "POST",
         headers: {
           "content-type" : "application/json"

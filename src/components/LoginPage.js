@@ -15,7 +15,7 @@ export default function LoginPage() {
   useEffect(() => {
     async function authChecker() {
       try {
-        const response = await fetch("https://securedoc-server.vercel.app/authenticate", {
+        const response = await fetch("https://securedoc-server.onrender.com/authenticate", {
           credentials: "include",
         });
 
@@ -55,16 +55,18 @@ export default function LoginPage() {
       setFormError(true);
       return;
     }
-
+  
     try {
       setLoading(true);
-
+  
       const data = {
         username,
         password,
       };
-
-      const response = await fetch("https://securedoc-server.vercel.app/login", {
+  
+      console.log("Sending login request with data:", data); // Add logging statement
+  
+      const response = await fetch("https://securedoc-server.onrender.com/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -72,10 +74,12 @@ export default function LoginPage() {
         body: JSON.stringify(data),
         credentials: "include",
       });
-
+  
       if (response.ok) {
+        console.log("Login successful!"); // Add logging statement
         navigate("/user");
       } else if (response.status === 401) {
+        console.log("Invalid username or password"); // Add logging statement
         setLoading(false);
         navigate("/login", {
           state: {
@@ -84,6 +88,7 @@ export default function LoginPage() {
           },
         });
       } else if (response.status === 400) {
+        console.log("User not registered"); // Add logging statement
         navigate("/register", {
           state: {
             message: "User not registered, please register",
@@ -95,6 +100,7 @@ export default function LoginPage() {
       console.error("Error occurred:", error);
     }
   }
+  
 
   return (
     <>
