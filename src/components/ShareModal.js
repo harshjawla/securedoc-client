@@ -23,7 +23,7 @@ export default function ShareModal({ onClose, name, emails, docName }) {
 
     if(response.ok){
         const receivedData = await response.json();
-        const url = `http://localhost:3000/${receivedData.userId}/${docName}/${!emails.length ? "all" : "shared"}`;
+        const url = `https://securedoc-client.vercel.app/${receivedData.userId}/${docName}/${!emails.length ? "all" : "shared"}`;
         setCopy(url);
     } else{
         setLoader(false);
