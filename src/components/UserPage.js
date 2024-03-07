@@ -11,7 +11,7 @@ export default function UserPage() {
     async function authChecker() {
       try {
         const response = await fetch(
-          "https://securedoc-server.onrender.com/authenticate",
+          "https://securedoc-server.vercel.app/authenticate",
           {
             credentials: "include",
           }

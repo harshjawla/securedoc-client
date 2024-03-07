@@ -29,7 +29,7 @@ export default function Editor(props) {
         content: content,
       };
 
-      const response = await fetch("https://securedoc-server.onrender.com/update", {
+      const response = await fetch("https://securedoc-server.vercel.app/update", {
         method: "POST",
         headers: {
           "content-type": "application/json",
