@@ -11,7 +11,7 @@ export default function DeleteModal({ onClose, name }) {
       name,
     };
 
-    const response = await fetch("https://securedoc-server.vercel.app/delete", {
+    const response = await fetch("https://securedoc-server.onrender.com/delete", {
       method: "POST",
       headers: {
         "content-type": "application/json",

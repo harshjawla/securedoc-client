@@ -38,7 +38,7 @@ const Document = () => {
   useEffect(() => {
     async function fileParser() {
       try {
-        const response = await fetch("https://securedoc-server.vercel.app/userfiles", {
+        const response = await fetch("https://securedoc-server.onrender.com/userfiles", {
           method: "POST",
           credentials: "include",
         });
