@@ -42,7 +42,7 @@ export default function Modal({ onClose }) {
         console.log(receivedData);
       }
     } catch (error) {
-      
+      console.log("error :", error);
     }
   }
 
