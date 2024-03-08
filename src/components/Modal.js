@@ -38,6 +38,8 @@ export default function Modal({ onClose }) {
       } else{
         setLoading(false);
         setFormError("Filename must be unique");
+        const receivedData = await response.json();
+        console.log(receivedData);
       }
     } catch (error) {
       
