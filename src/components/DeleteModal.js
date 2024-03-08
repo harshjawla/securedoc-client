@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
 import Loading from "./Loading";
 
-export default function DeleteModal({ onClose, name }) {
+export default function DeleteModal({ onClose, name, docName }) {
   const [loader, setLoader] = useState(false);
   const [redirect, setRedirect] = useState(false);
 
   async function handleClick() {
     setLoader(true);
     const data = {
-      name,
+      name: docName,
     };
 
     const response = await fetch("https://securedoc-server.vercel.app/delete", {

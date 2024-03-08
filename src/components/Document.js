@@ -69,7 +69,7 @@ const Document = () => {
 
   return (
     <>
-      {dlt && <DeleteModal name={"Are you sure you want to delete " + dlt} onClose={handleDltClose} />}
+      {dlt && <DeleteModal docName= {dlt} name={"Are you sure you want to delete " + dlt} onClose={handleDltClose} />}
       {loader && <Loading />}
       <div className="mt-10 mb-5 w-3/4 mx-auto">
         <div className="grid grid-cols-5 gap-4">
