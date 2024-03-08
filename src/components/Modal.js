@@ -28,7 +28,7 @@ export default function Modal({ onClose }) {
       const response = await fetch("https://securedoc-server.vercel.app/create", {
         method: "POST",
         headers: {
-          "Content-Type": "application/json",
+          "content-Type": "application/json",
         },
         body: JSON.stringify(data),
         credentials: "include",
