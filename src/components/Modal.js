@@ -10,41 +10,48 @@ export default function Modal({ onClose }) {
 
   async function handleClick(e) {
     e.preventDefault();
+    
     if (!name) {
       setFormError("Please fill above field");
       return;
     } else {
       setFormError(false);
     }
+    
     setLoading(true);
-
+  
     try {
       const data = {
-        name : name,
-      }
+        name: name,
+      };
+  
       const response = await fetch("https://securedoc-server.vercel.app/create", {
         method: "POST",
         headers: {
-          "content-type" : "application/json"
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(data),
         credentials: "include",
       });
-
-      if(response.ok){
+  
+      if (response.ok) {
         setLoading(false);
         const receivedData = await response.json();
-        return navigate("/editor", {state: {data: receivedData}});
-      } else{
+        return navigate("/editor", { state: { data: receivedData } });
+      } else {
         setLoading(false);
-        setFormError("Filename must be unique");
-        const receivedData = await response.json();
-        console.log(receivedData);
+        if (response.status === 401) {
+          setFormError("Filename must be unique");
+        } else {
+          const errorMessage = await response.text();
+          console.log(errorMessage);
+        }
       }
     } catch (error) {
-      console.log("error :", error);
+      console.log("Error:", error);
     }
   }
+  
 
   return (
     <>
